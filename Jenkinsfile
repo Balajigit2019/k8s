@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('k8s_master build') { 
             steps {
-                'terraform apply --auto-approve'
+                terraform apply --auto-approve
             }
         }
     }    
