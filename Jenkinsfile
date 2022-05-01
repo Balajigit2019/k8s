@@ -1,10 +1,15 @@
 pipeline {
     agent any 
     stages {
-        stage('k8s_master build') { 
+        stage('terraform init') { 
+            steps {
+                terraform init
+        stage('terraform apply') {
             steps {
                 terraform apply --auto-approve
             }
         }
     }    
+}    
+}
 }    
