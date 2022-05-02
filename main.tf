@@ -155,7 +155,7 @@ resource "aws_key_pair" "kp" {
 
 resource "local_file" "ssh_key" {
   filename = "${aws_key_pair.kp.key_name}.pem"
-  content = tls_private_key.pk.private_key_pem
+  content = tls_private_key.pk.private_key_pem > k8s.pem
   file_permission = "440"
 }  
       
