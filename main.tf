@@ -71,7 +71,7 @@ resource "aws_default_security_group" "default" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
-    Name = "k8s_sg"
+    Name = "k8s_sg" 
   }	
 }
 #subnets#
