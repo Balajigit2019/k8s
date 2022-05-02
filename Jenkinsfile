@@ -15,6 +15,16 @@ pipeline {
             steps {
                 sh 'TF_LOG=DEBUG terraform apply --auto-approve'
             }
+        }    
+        stage('Download') {
+            steps {
+                sh 'echo "artifact file" > generatedFile.txt'
+            }
         }
-    }    
+    post {
+        always {
+            archiveArtifacts artifacts: 'generatedFile.txt', onlyIfSuccessful: true
+        }
+    }
+  }         
 }    
