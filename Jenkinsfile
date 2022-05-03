@@ -29,6 +29,6 @@ pipeline {
                 sh 'echo "artifact file" > generatedFile.txt'
             }
         }
-*/        
-    }         
+       
+*/    }         
 }    
