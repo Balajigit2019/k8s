@@ -1,3 +1,4 @@
+/*
 pipeline {
     agent any 
     stages {
@@ -15,11 +16,19 @@ pipeline {
             steps {
                 sh 'TF_LOG=DEBUG terraform apply --auto-approve'
             }
-        }    
+        }
+*/        
+        stage('terraform destroy') { 
+            steps {
+               sh 'terraform destroy --auto-approve'
+            }    
+        }
+/*
         stage('Download') {
             steps {
                 sh 'echo "artifact file" > generatedFile.txt'
             }
         }
+*/        
     }         
 }    
