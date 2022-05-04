@@ -7,6 +7,6 @@ EXPOSE 3000
 
 RUN dotnet build
 
-WORKDIR /app/
+WORKDIR /app/Core.Application/
 
-ENTRYPOINT ["dotnet", "run", "/app/Core.Application.dll"]
+ENTRYPOINT ["dotnet", "run", "Core.Application.dll"]
