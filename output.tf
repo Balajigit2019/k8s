@@ -7,3 +7,6 @@ output "public_subnet_id" {
 output "aws_security_group_default" {
   value = aws_default_security_group.default.id
 }  
+output "vpc_id" {
+  value = aws_vpc.vpc_id
+}  
