@@ -60,7 +60,6 @@
     - name: install kubernetes
       shell: |
                sudo apt-get update
-               sudo apt install openjdk-11-jdk
                sudo apt-get install -y kubelet kubeadm kubectl
                sudo apt-mark hold kubelet kubeadm kubectl       
     - name: k8s initialize
