@@ -1,3 +1,8 @@
+provider "aws" {
+access_key = "${var.access_key}"
+secret_key = "${var.secret_key}"
+region = "${var.region}"	
+}
 #vpc#
 resource "aws_vpc" "vpc" {
   cidr_block = "172.16.0.0/16"
@@ -66,7 +71,7 @@ resource "aws_default_security_group" "default" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
-    Name = "k8s_sg"
+    Name = "k8s_sg" 
   }	
 }
 #subnets#
