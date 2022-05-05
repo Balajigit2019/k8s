@@ -179,6 +179,7 @@ resource "aws_instance" "jenkins" {
  instance_type = "t2.medium"
  key_name      = var.key_name
  subnet_id = aws_subnet.pub_sub.id
+ user_data = "${file("install.sh")}"
     
 tags = {
    Name = "k8s"
@@ -191,12 +192,14 @@ connection {
     host = self.public_ip
 	
 }
+/*
 provisioner "remote-exec" {
     inline = [
 	 "sudo apt update -y",
          "sudo apt install ansible -y"
 ]
   }
+*/
 provisioner "file" {
     source = "k8s.yaml"
     destination = "/tmp/k8s.yaml"
@@ -207,13 +210,3 @@ provisioner "remote-exec" {
 ]
   }
 }  
-
-/*
-resource "null_resource" "file_creation" {
-  provisioner "local-exec" {
-     command = "/bin/bash file.sh"
-  }	 
-}
-*/
-
-
