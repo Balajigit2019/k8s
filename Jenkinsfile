@@ -21,7 +21,7 @@ pipeline {
                 sh 'echo "artifact file" > generatedFile.txt'
             }
          }
-         stage('Deploy pods to k8s_master')
+         stage('Deploy pods to k8s_master') {
             steps {
                 sshagent(['K8s_master']) {
                     sh "scp -o StrictHostKeyChecking=no pods.yaml ubuntu@52.66.195.32:/home/ubuntu/"
@@ -33,7 +33,8 @@ pipeline {
                         }
                     } 
                 }
-            }                     
+            }
+         }    
      }         
 }
 /*
