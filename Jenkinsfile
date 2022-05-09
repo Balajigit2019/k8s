@@ -31,10 +31,10 @@ pipeline {
                         }catch(error){
                             sh "ssh ubuntu@52.66.195.32 kubectl create -f ."
                         }
-                     } 
-                 }
-             }                     
-      }         
+                } 
+            }
+        }                     
+     }         
 }
 /*
         stage('terraform destroy') { 
