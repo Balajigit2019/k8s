@@ -20,8 +20,21 @@ pipeline {
             steps {
                 sh 'echo "artifact file" > generatedFile.txt'
             }
-        }     
-    }         
+        }
+        stage('Deploy pods to k8s_master')
+            steps {
+                sshagent(['K8s_master']) {
+                    sh "scp -o StrictHostKeyChecking=no pods.yaml ubuntu@52.66.195.32:/home/ubuntu/"
+                    script{
+                        try{
+                            sh "ssh ubuntu@52.66.195.32 kubectl apply -f ."
+                        }catch(error){
+                            sh "ssh ubuntu@52.66.195.32 kubectl create -f ."
+                        }
+                     } 
+                 }
+             }                     
+      }         
 }
 /*
         stage('terraform destroy') { 
