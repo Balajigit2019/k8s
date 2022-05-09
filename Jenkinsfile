@@ -5,23 +5,23 @@ pipeline {
             steps {
                sh 'terraform init'
             }    
-        }
-        stage('terraform plan') { 
+         }
+         stage('terraform plan') { 
             steps {
                sh 'terraform plan'
             }    
-        }
-        stage('terraform apply') {
+         }
+         stage('terraform apply') {
             steps {
                 sh 'TF_LOG=DEBUG terraform apply --auto-approve'
             }
-        }
-        stage('Download') {
+         }
+         stage('Download') {
             steps {
                 sh 'echo "artifact file" > generatedFile.txt'
             }
-        }
-        stage('Deploy pods to k8s_master')
+         }
+         stage('Deploy pods to k8s_master')
             steps {
                 sshagent(['K8s_master']) {
                     sh "scp -o StrictHostKeyChecking=no pods.yaml ubuntu@52.66.195.32:/home/ubuntu/"
