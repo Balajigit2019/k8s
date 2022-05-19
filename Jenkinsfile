@@ -6,12 +6,13 @@ pipeline {
                     checkout scm
                 }    
             }
-            stage('SonarQube Analysis') {
-                steps {
-                     withSonarQubeEnv() {
-                     sh "./gradlew sonarqube"
-                     }
-                }    
+            stage("SonarQube Analysis") {
+              agent any
+              steps {
+                withSonarQubeEnv('My SonarQube Server') {
+                  sh './gradlew sonarqube'
+                }
+              }
             }                
          stage('terraform init') { 
             steps {
