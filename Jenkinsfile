@@ -9,7 +9,7 @@ pipeline {
             stage("SonarQube Analysis") {
               agent any
               steps {
-                withSonarQubeEnv('My SonarQube Server') {
+                withSonarQubeEnv() {
                   sh './gradlew sonarqube'
                 }
               }
