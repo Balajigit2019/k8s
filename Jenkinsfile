@@ -2,14 +2,17 @@ pipeline {
     agent any 
     stages {
             stage('SCM') {
-               checkout scm
+                steps {
+                    checkout scm
+                }    
             }
             stage('SonarQube Analysis') {
-              withSonarQubeEnv() {
+                withSonarQubeEnv() {
+                }
+                steps {
                 sh "./gradlew sonarqube"
               }
-            }
-         }      
+            }     
          stage('terraform init') { 
             steps {
                sh 'terraform init'
