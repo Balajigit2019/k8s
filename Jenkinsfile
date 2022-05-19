@@ -9,12 +9,10 @@ pipeline {
             stage('SonarQube Analysis') {
                 steps {
                      withSonarQubeEnv() {
-                     }    
+                     sh "./gradlew sonarqube"
+                     }
                 }    
-                steps {
-                sh "./gradlew sonarqube"
-              }
-            }     
+            }                
          stage('terraform init') { 
             steps {
                sh 'terraform init'
